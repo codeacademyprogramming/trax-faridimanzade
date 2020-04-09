@@ -3,9 +3,11 @@ $(document).ready(function () {
 
 
 
+    $('.preloader').delay(3000).fadeOut(1000);
+    setTimeout(function(){
 
-
-
+        $("body").delay(3000).css("overflow-y", "auto");
+    },3000)
 
 
 
@@ -39,7 +41,7 @@ $(document).ready(function () {
                 $(".burgerSelectedBorder").css("border", "1px solid transparent");
                 $(".burgerSelectedBorder").eq(1).css("width", "100%");
                 $(".burgerSelectedBorder").eq(1).css("border", "2px solid white");
-            } else if (window.scrollY >= document.querySelector(".pricingContainer").offsetTop && window.scrollY < document.querySelector(".blogContainer").offsetTop) {
+            } else if (window.scrollY >= document.querySelector(".pricingContainer").offsetTop && window.scrollY < document.querySelector(".portfolioContainer").offsetTop) {
                 $(".navSelectedBorder").css("width", "0");
                 $(".navSelectedBorder").css("border", "1px solid transparent");
                 $(".navSelectedBorder").eq(2).css("width", "100%");
@@ -49,6 +51,16 @@ $(document).ready(function () {
                 $(".burgerSelectedBorder").css("border", "1px solid transparent");
                 $(".burgerSelectedBorder").eq(2).css("width", "100%");
                 $(".burgerSelectedBorder").eq(2).css("border", "2px solid white");
+            } else if (window.scrollY >= document.querySelector(".portfolioContainer").offsetTop && window.scrollY < document.querySelector(".blogContainer").offsetTop) {
+                $(".navSelectedBorder").css("width", "0");
+                $(".navSelectedBorder").css("border", "1px solid transparent");
+                $(".navSelectedBorder").eq(3).css("width", "100%");
+                $(".navSelectedBorder").eq(3).css("border", "1px solid #24cdd5");
+
+                $(".burgerSelectedBorder").css("width", "0");
+                $(".burgerSelectedBorder").css("border", "1px solid transparent");
+                $(".burgerSelectedBorder").eq(3).css("width", "100%");
+                $(".burgerSelectedBorder").eq(3).css("border", "2px solid white");
             } else if (window.scrollY >= document.querySelector(".blogContainer").offsetTop && window.scrollY < document.querySelector(".contactContainer").offsetTop) {
                 $(".navSelectedBorder").css("width", "0");
                 $(".navSelectedBorder").css("border", "1px solid transparent");
@@ -113,6 +125,11 @@ $(document).ready(function () {
                     scrollTop: document.querySelector(".pricingContainer").offsetTop
                 }, "slow");
                 break;
+            case 3:
+                $("html, body").animate({
+                    scrollTop: document.querySelector(".portfolioContainer").offsetTop
+                }, "slow");
+                break;
             case 4:
                 $("html, body").animate({
                     scrollTop: document.querySelector(".blogContainer").offsetTop
@@ -124,7 +141,7 @@ $(document).ready(function () {
                 }, "slow");
                 break;
             default:
-                alert("Is not Ready");
+                alert("Wrong Choice");
         }
     }
 
@@ -673,12 +690,12 @@ $(document).ready(function () {
         window.addEventListener("scroll", function () {
             let selfContainerTimesLess = document.querySelector(".pricingContainer").offsetHeight / 1.2;
             let selfContainerTimesMore = document.querySelector(".pricingContainer").offsetHeight * 0.83;
-            if ((window.scrollY > (document.querySelector(".pricingContainer").offsetTop - selfContainerTimesLess)) && (window.scrollY < (document.querySelector(".testimonialContainer").offsetTop - selfContainerTimesMore))) {
+            if ((window.scrollY > (document.querySelector(".pricingContainer").offsetTop - selfContainerTimesLess)) && (window.scrollY < (document.querySelector(".portfolioContainer").offsetTop - selfContainerTimesMore))) {
                 $(".pricingHeading p span").addClass("animationClass");
                 $(".pricingHeading h2 span").addClass("animationClass");
                 $(".pricingSwitch").css("opacity", "1");
             }
-            if ((window.scrollY > (document.querySelector(".pricingContainer").offsetTop - selfContainerTimesLess + 200)) && (window.scrollY < (document.querySelector(".testimonialContainer").offsetTop - selfContainerTimesMore + 200))) {
+            if ((window.scrollY > (document.querySelector(".pricingContainer").offsetTop - selfContainerTimesLess + 200)) && (window.scrollY < (document.querySelector(".portfolioContainer").offsetTop - selfContainerTimesMore + 200))) {
                 $(".pricingCarousel .item").css("opacity", "1");
             }
         });
@@ -1067,6 +1084,142 @@ $(document).ready(function () {
             Mycursor.style.display = "block";
         }
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    jQuery('#grid-container').cubeportfolio({
+        filters: '#filters-container',
+        layoutMode: 'grid',
+        defaultFilter: "*",
+        animationType: "rotateSides",
+        gapHorizontal: 0,
+        gapVertical: 0,
+        gridAdjustment: 'responsive',
+        mediaQueries: [{
+            width: 1500,
+            cols: 3,
+        }, {
+            width: 1100,
+            cols: 3,
+        }, {
+            width: 767,
+            cols: 2,
+        }, {
+            width: 480,
+            cols: 1,
+        }]
+    });
+
+
+
+
+
+
+    $("#filters-container div").click(function () {
+        $("#filters-container div").removeClass("portfolioGallerySelected");
+        $(this).addClass("portfolioGallerySelected");
+    });
+
+
+
+
+    window.addEventListener("scroll", function () {
+        let selfContainerTimesLess = document.querySelector(".portfolioContainer").offsetHeight / 3;
+        let selfContainerTimesMore = document.querySelector(".portfolioContainer").offsetHeight * 0.83;
+        if ((window.scrollY > (document.querySelector(".portfolioContainer").offsetTop - selfContainerTimesLess)) && (window.scrollY < (document.querySelector(".testimonialContainer").offsetTop - selfContainerTimesMore))) {
+            $(".portfolioHeadingContent p span").addClass("animationClass");
+            $(".portfolioHeadingContent p span").css("opacity", "1");
+            $(".portfolioHeadingContent h2 span").addClass("animationClass");
+            $(".portfolioHeadingContent h2 span").css("opacity", "1");
+        }
+    });
+
+
+    modalOpenImage();
+
+    function modalOpenImage() {
+        let modal = document.getElementsByClassName("modal")[0];
+
+        $(".fa-search-plus").click(function () {
+            $imgsrc = $(this).parent().parent().parent().siblings().attr('src');
+            $(".modal-content img").attr("src", $imgsrc);
+            $(".modal").fadeIn(500);
+            $("body").css("overflow-y", "hidden");
+        });
+
+        $(".modal span").click(function () {
+            $(".modal").fadeOut(500);
+            $("body").css("overflow-y", "auto");
+        });
+
+        $(window).click(function () {
+            if (event.target == modal) {
+                $("body").css("overflow-y", "auto");
+                $(".modal").fadeOut(500);
+            }
+        });
+    }
+
+
+    modalImageSliderButtons();
+
+    function modalImageSliderButtons() {
+        let images = document.querySelectorAll(".cbp-item img");
+        let imgContainer = document.querySelector(".modal-content img");
+
+        let i = 0;
+
+        // var youtubeimgsrc = document.getElementById("youtubeimg").src;
+
+        $(".fa-backward").click(function () {
+            i--;
+
+            if (i >= 0) {
+                imgContainer.src = images[i].src
+            } else {
+                i = images.length - 1;
+                imgContainer.src = images[i].src
+            }
+        });
+
+        $(".fa-forward").click(function () {
+            i++;
+
+            if (i < images.length) {
+                imgContainer.src = images[i].src
+            } else {
+                i = 0;
+                imgContainer.src = images[i].src
+            }
+        });
+
+    }
+
+
+
+
+
+
 
 
 
