@@ -1865,6 +1865,10 @@ nav {
     cursor: pointer;
 }
 
+#filters-container div p:hover{
+    color: #24cdd5;
+}
+
 
 #filters-container div span {
     font-size: 14px;
@@ -3133,24 +3137,37 @@ footer {
 
 
 
+/* ====================================================================================================== SCROLL TO TOP */
+/* ====================================================================================================== SCROLL TO TOP */
+.toTopButton {
+    position: fixed;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-image: linear-gradient(to right, #5192e1 0%, #23ced5 51%, #5192e1 100%);
+    background-size: 200% auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    right: 30px;
+    bottom: 40px;
+    font-size: 30px;
+    cursor: pointer;
+    display: none;
+    z-index: 3000;
+}
+
+.toTopButton:hover {
+    background-position: right center;
+    transition: 0.5s;
+}
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-/* ========================================================================== MODAL IMAGE */
-/* ========================================================================== MODAL IMAGE */
-
+/* ========================================================================== MODAL FOR IMAGE */
+/* ========================================================================== MODAL FOR IMAGE */
 .modal {
     background-color: rgba(0, 0, 0, 0.7);
     position: fixed;
@@ -3212,7 +3229,7 @@ footer {
     cursor: pointer;
     font-size: 25px;
     color: #24cdd5;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0);
     transition: 0.5s;
     display: flex;
     align-items: center;
@@ -3223,6 +3240,7 @@ footer {
     border: 3px solid rgba(0, 0, 0, 0);
     margin-left: 5px;
     margin-right: 5px;
+    border-radius: 50%;
 }
 
 .fa-forward:hover,
@@ -3230,85 +3248,11 @@ footer {
     border: 3px solid #24cdd5;
 }
 
-/* ========================================================================== MODAL IMAGE */
-/* ========================================================================== MODAL IMAGE */
 
 
 
-
-
-
-
-
-
-
-
-
-/* =================================================================================== PRELOADER */
-.preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999999;
-    background-image: url('../media/loading.gif');
-    background-repeat: no-repeat;
-    background-color: black;
-    background-position: center;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ====================================================================================================== SCROLL TO TOP */
-/* ====================================================================================================== SCROLL TO TOP */
-/* ====================================================================================================== SCROLL TO TOP */
-/* ====================================================================================================== SCROLL TO TOP */
-.toTopButton {
-    position: fixed;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background-image: linear-gradient(to right, #5192e1 0%, #23ced5 51%, #5192e1 100%);
-    background-size: 200% auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    right: 30px;
-    bottom: 40px;
-    font-size: 30px;
-    cursor: pointer;
-    display: none;
-    z-index: 3000;
-}
-
-.toTopButton:hover {
-    background-position: right center;
-    transition: 0.5s;
-}
-
-
-
-
-/* ====================================================================================================== MODAL VIDEO */
-/* ====================================================================================================== MODAL VIDEO */
-/* ====================================================================================================== MODAL VIDEO */
-/* ====================================================================================================== MODAL VIDEO */
+/* ====================================================================================================== MODAL FOR VIDEO */
+/* ====================================================================================================== MODAL FOR VIDEO */
 .modal-video {
     background-color: rgba(0, 0, 0, 0.6);
     position: fixed;
@@ -3360,6 +3304,24 @@ footer {
     color: white;
     background-color: #24cdd5;
     border: 3px solid white;
+}
+
+
+
+
+/* ====================================================================================================== PRELOADER */
+/* ====================================================================================================== PRELOADER */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    background-image: url('../media/loading.gif');
+    background-repeat: no-repeat;
+    background-color: black;
+    background-position: center;
 }
 
 
@@ -4109,12 +4071,13 @@ footer {
 @media screen and (max-width: 450px) {
     .mobileLeftContent {
         height: 450px;
-        margin-bottom: 120px;
+        margin-bottom: 80px;
     }
 
     .mobileRightContent {
         height: 450px;
         margin-top: 50px;
+        margin-bottom: 50px;
     }
 }
 
